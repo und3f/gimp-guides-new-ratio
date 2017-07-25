@@ -98,8 +98,8 @@
 )
 
 (script-fu-register "advanced-guides"
-  _"Ratio guides"
-  _"Add series of guides at the position specified as a ratio""
+  _"New guides (by _Ratio)..."
+  _"Add series of guides at the position specified as a ratio"
   "Sergey Zasenko (sergii@zasenko.name)"
   "Sergey Zasenko"
   "2017-07-25"
