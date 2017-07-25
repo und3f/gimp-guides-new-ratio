@@ -107,7 +107,7 @@
   SF-IMAGE      "The Image"     0
   SF-DRAWABLE   "The Layer"     0
   SF-ADJUSTMENT "Rules depth"   '(3 1 10 1 2 0 1)
-  SF-OPTION     "Direction"     '(_"Right" _"Bottom" _"Left" _"Top")
+  SF-OPTION     "Direction"     '(_"Right" _"Down" _"Left" _"Up")
   SF-OPTION     "Ratio"     '(_"Golden sections" _"Rule of twos" _"Rule of thirds" _"Rule of fifths" _"Silver sections")
 )
 
