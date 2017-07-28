@@ -46,15 +46,18 @@
     )
 )
 
-(define (advanced-guides image drawable depth indirection ratio)
+(define (draw-guides image boundries depth indirection ratio) 
   (gimp-undo-push-group-start image)
+
   (let* (
-         (total-value
+         (line-info
            (case indirection
-             ((0 2) (car (gimp-image-width image)))
-             (else (car (gimp-image-height image)))
+             ((0 2) (list (car boundries)  (car (cddr boundries))))
+             (else  (list (cadr boundries) (cadddr boundries)))
            )
          )
+         (start-value (car line-info))
+         (total-value (- (cadr line-info) start-value))
          (guide
            (case indirection
              ((0 2) gimp-image-add-vguide)
@@ -85,7 +88,10 @@
             (local-value (ratio-algo value))
             )
 
-            (guide image (calc-using-direction total-value local-value direction))
+            (guide image 
+                   (+ start-value
+                      (calc-using-direction total-value local-value direction))
+                   )
             (draw-guide guide total-value local-value direction (- depth 1))
         )
         )
@@ -93,8 +99,36 @@
 
     (draw-guide guide total-value total-value direction depth)
   )
+
   (gimp-undo-push-group-end image)
   (gimp-displays-flush)
+)
+
+(define (advanced-guides image drawable depth indirection ratio)
+  (let*
+    (
+      (draw-guides-lambda
+        (lambda (boundries)
+          (draw-guides image boundries depth indirection ratio)
+        )
+      )
+
+      (boundries (gimp-selection-bounds image))
+      ;; non-empty INT32 TRUE if there is a selection
+      (selection (car boundries))
+    )
+    (if (= selection TRUE)
+      (draw-guides-lambda (cdr boundries))
+      (draw-guides-lambda 
+        (list 
+          0
+          0
+          (car (gimp-image-width image))
+          (car (gimp-image-height image))
+        )
+      )
+    )
+  )
 )
 
 (script-fu-register "advanced-guides"
