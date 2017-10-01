@@ -23,5 +23,5 @@ If any selection present its boundries are used for guides construction.
 
 ### Example
 
-Composition analyis using *GIMP ratio guides plugin*
+Composition analyis using *GIMP ratio guides* plugin:
 ![Mondrian's composition](https://i.imgur.com/QvCNGC0.png)
