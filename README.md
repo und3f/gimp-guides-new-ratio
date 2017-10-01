@@ -20,3 +20,8 @@ Download [guides-new-ratio.scm](guides-new-ratio.scm) and copy to the
 *Image* → *Guides* → *New Guides (by Ratio)...*
 
 If any selection present its boundries are used for guides construction.
+
+### Example
+
+Composition analyis using *GIMP ratio guides plugin*
+![Mondrian's composition](https://i.imgur.com/QvCNGC0.png)
